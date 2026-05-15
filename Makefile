@@ -30,7 +30,7 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c $(BUILD_DIR)
 # Link executable
 $(EXECUTABLE): $(OBJECTS) $(BIN_DIR)
 	$(CC) $(CFLAGS) $(OBJECTS) -o $(EXECUTABLE) $(LDFLAGS)
-	@echo "✓ Build successful: $(EXECUTABLE)"
+	@echo "[OK] Build successful: $(EXECUTABLE)"
 
 # Run the program
 run: $(EXECUTABLE)
@@ -40,7 +40,7 @@ run: $(EXECUTABLE)
 # Clean build artifacts
 clean:
 	@rm -rf $(BUILD_DIR) $(BIN_DIR)
-	@echo "✓ Build cleaned"
+	@echo "[OK] Build cleaned"
 
 # Rebuild everything
 rebuild: clean all

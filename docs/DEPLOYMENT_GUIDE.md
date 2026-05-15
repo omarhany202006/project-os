@@ -88,29 +88,33 @@ chmod +x build.sh
 # Update package manager
 sudo apt-get update
 
-# Install required tools
-sudo apt-get install -y build-essential git qemu-system-x86-64 gcc-9 gdb
+# Install required tools for RISC-V xv6
+sudo apt-get install -y build-essential git qemu-system-riscv gcc-riscv64-linux-gnu gdb-multiarch
 
-# Clone xv6 if not already present
+# Verify the RISC-V toolchain
+qemu-system-riscv64 --version
+riscv64-linux-gnu-gcc --version
+
+# Clone the RISC-V xv6 labs repository
 cd ~
-git clone https://github.com/mit-pdos/xv6-public.git
-cd xv6-public
+git clone git://g.csail.mit.edu/xv6-labs-2025
+cd xv6-labs-2025
 ```
 
 ### 3.2 Integrate Kernel Panic Logger with xv6
 
 ```bash
 # Copy the kernel panic logger to xv6
-cp -r ~/kernel-panic-logger/include ~/xv6-public/
-cp -r ~/kernel-panic-logger/src ~/xv6-public/kernel-panic-logger/
+cp -r ~/kernel-panic-logger/include ~/xv6-labs-2025/
+cp -r ~/kernel-panic-logger/src ~/xv6-labs-2025/kernel-panic-logger/
 
 # Or link the directories
-ln -s ~/kernel-panic-logger ~/xv6-public/panic-logger
+ln -s ~/kernel-panic-logger ~/xv6-labs-2025/panic-logger
 ```
 
 ### 3.3 Modify xv6 Build System
 
-Edit `xv6-public/Makefile` to include panic logger compilation:
+Edit `xv6-labs-2025/Makefile` to include panic logger compilation:
 
 ```makefile
 # In the OBJS section, add:
@@ -127,7 +131,7 @@ kernel-panic-logger/%.o: kernel-panic-logger/%.c
 
 ### 3.4 Update xv6 trap handler
 
-In `xv6-public/trap.c`, integrate crash context capture:
+In `xv6-labs-2025/trap.c`, integrate crash context capture:
 
 ```c
 #include "kernel-panic-logger/log_buffer.h"
@@ -156,7 +160,7 @@ void trap(struct trapframe *tf) {
 ### 3.5 Build xv6 with Kernel Panic Logger
 
 ```bash
-cd ~/xv6-public
+cd ~/xv6-labs-2025
 make clean
 make
 make qemu
@@ -240,7 +244,7 @@ sudo apt-get install -y gcc-multilib
 
 ```bash
 # Clean xv6 build
-cd ~/xv6-public
+cd ~/xv6-labs-2025
 make clean
 make veryclean
 make
@@ -289,4 +293,4 @@ git pull origin main
 **Note:** For any issues during the process, refer to:
 - [Git Documentation](https://git-scm.com/doc)
 - [GitHub Docs](https://docs.github.com)
-- [xv6 Documentation](https://github.com/mit-pdos/xv6-public)
+- [xv6 Labs 2025 Documentation](https://github.com/mit-pdos/xv6-labs-2025)

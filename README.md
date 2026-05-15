@@ -46,17 +46,17 @@ Supports 21 x86-64 exception types:
 
 ```
 project os/
-├── include/
-│   ├── log_buffer.h        # Log buffer API
-│   └── crash_context.h     # Crash context API
-├── src/
-│   ├── log_buffer.c        # Log buffer implementation
-│   ├── crash_context.c     # Crash context implementation
-│   └── example.c           # Demonstration program
-├── Makefile                # Build configuration
-├── README.md               # This file
-└── docs/
-    └── API_REFERENCE.md    # Detailed API documentation
+|-- include/
+|   |-- log_buffer.h        # Log buffer API
+|   `-- crash_context.h     # Crash context API
+|-- src/
+|   |-- log_buffer.c        # Log buffer implementation
+|   |-- crash_context.c     # Crash context implementation
+|   `-- example.c           # Demonstration program
+|-- Makefile                # Build configuration
+|-- README.md               # This file
+`-- docs/
+    `-- API_REFERENCE.md    # Detailed API documentation
 ```
 
 ## Building

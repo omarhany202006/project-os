@@ -98,4 +98,10 @@ int log_buffer_clear(log_buffer_t *buffer);
  */
 void log_buffer_dump(log_buffer_t *buffer);
 
+/**
+ * Get the process-wide global log buffer instance.
+ * @return pointer to initialized global log buffer
+ */
+log_buffer_t* log_buffer_get_global(void);
+
 #endif /* LOG_BUFFER_H */

@@ -3,6 +3,7 @@ REM Build script for Windows environments without gcc pre-installed
 REM This creates a ready-to-build project that works with any C compiler
 
 setlocal enabledelayedexpansion
+set EXIT_CODE=0
 
 echo.
 echo Kernel Panic Logger - Windows Build Script
@@ -22,6 +23,12 @@ if %errorlevel% equ 0 (
     goto build_msvc
 )
 
+where wsl.exe >nul 2>&1
+if %errorlevel% equ 0 (
+    echo Found WSL
+    goto build_wsl
+)
+
 echo WARNING: No C compiler found!
 echo.
 echo To compile this project, install one of:
@@ -35,6 +42,14 @@ echo 2. Add to your PATH
 echo 3. Run this script again
 echo.
 
+set EXIT_CODE=1
+goto end
+
+:build_wsl
+echo.
+echo Building with WSL...
+wsl.exe -e bash -lc "cd ""$(wslpath '%CD%')"" && make run"
+if %errorlevel% neq 0 goto compile_error
 goto end
 
 :build_gcc
@@ -89,7 +104,7 @@ goto success
 echo.
 echo [ERROR] Compilation failed!
 echo.
-goto end
+endlocal & exit /b 1
 
 :success
 echo Running demo...
@@ -99,4 +114,4 @@ echo.
 goto end
 
 :end
-endlocal
+endlocal & exit /b %EXIT_CODE%

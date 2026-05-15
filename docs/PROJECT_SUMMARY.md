@@ -14,9 +14,9 @@ A robust kernel panic logging system with circular log buffers and comprehensive
 - **Efficient APIs**: write, read, dump, clear, get statistics
 
 ### 2. Crash Context Information (`crash_context.h/c`)
-- **CPU state capture**: All x86-64 general and control registers
+- **CPU state capture**: All RISC-V general and control registers
 - **Stack trace collection**: Up to 32 stack frames with symbols
-- **Exception handling**: 21 x86-64 exception types with names
+- **Exception handling**: 21 RISC-V exception types with names
 - **Memory information**: Fault address and kernel stack bounds
 - **Process context**: PID, TID, process name
 - **System state**: Uptime, IRQ level, interrupt context
@@ -139,7 +139,7 @@ const char* crash_context_get_exception_name(uint32_t exception_number);
 - Compatible with WSL2 Ubuntu terminal
 
 ### xv6 Integration Ready
-- Designed for x86-64 architecture
+- Designed for RISC-V xv6 architecture
 - Follows xv6 kernel conventions
 - Can hook into trap handler
 - Minimal memory footprint

@@ -94,6 +94,13 @@ chmod +x build.sh
 # Produces: ./bin/kernel_panic_logger
 ```
 
+### RISC-V / xv6 Verification
+```bash
+qemu-system-riscv64 --version
+riscv64-linux-gnu-gcc --version
+# Example: git clone git://g.csail.mit.edu/xv6-labs-2025
+```
+
 ## Documentation
 
 1. **README.md** - Features, usage, API reference

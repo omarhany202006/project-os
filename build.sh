@@ -27,7 +27,7 @@ echo "Linking..."
 gcc build/log_buffer.o build/crash_context.o build/example.o -o bin/kernel_panic_logger
 
 echo ""
-echo "✓ Build successful!"
+echo "[OK] Build successful!"
 echo "Output: bin/kernel_panic_logger"
 echo ""
 

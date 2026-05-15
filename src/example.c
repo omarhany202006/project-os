@@ -64,19 +64,22 @@ void demo_exception_names(void) {
 }
 
 int main(int argc, char *argv[]) {
-    printf("╔════════════════════════════════════════════════════════════════╗\n");
-    printf("║         KERNEL PANIC LOGGER - DEMONSTRATION PROGRAM             ║\n");
-    printf("║                                                                ║\n");
-    printf("║  Log Buffers & Crash Context Info for Panic Handling           ║\n");
-    printf("║  Windows Implementation (Compatible with xv6 on Ubuntu)        ║\n");
-    printf("╚════════════════════════════════════════════════════════════════╝\n");
+    (void)argc;
+    (void)argv;
+
+    printf("+================================================================+\n");
+    printf("|         KERNEL PANIC LOGGER - DEMONSTRATION PROGRAM            |\n");
+    printf("|                                                                |\n");
+    printf("|  Log Buffers & Crash Context Info for Panic Handling           |\n");
+    printf("|  Portable C99 implementation for Ubuntu/WSL                    |\n");
+    printf("+================================================================+\n");
     
     /* Run demonstrations */
     demo_exception_names();
     demo_log_buffer();
     demo_crash_context();
     
-    printf("\n✓ All demonstrations completed successfully!\n");
+    printf("\n[OK] All demonstrations completed successfully!\n");
     printf("Ready for deployment to Ubuntu/xv6 environment.\n\n");
     
     return 0;
