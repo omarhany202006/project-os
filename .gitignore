@@ -1,0 +1,37 @@
+# Build artifacts
+build/
+bin/
+*.o
+*.exe
+*.out
+*.so
+*.a
+*.dylib
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.code-workspace
+
+# OS-specific
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Project-specific
+*.log
+crash_dump_*.txt
+core
+core.*
+
+# Python bytecode (if documentation is generated)
+__pycache__/
+*.pyc
+*.pyo
+
+# Documentation build output
+docs/_build/
